@@ -1,4 +1,4 @@
-package CourseWork1;
+package CourseWork2;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;

@@ -1,4 +1,4 @@
-package CourseWork1;
+package CourseWork2;
 
 import java.time.Duration;
 import java.time.LocalDateTime;
@@ -11,9 +11,16 @@ public class Statistics {
     LogEntry logEntry;
     private long totalTraffic, totalTrafficPeriod, totalTrafficHour;
     private LocalDateTime minTime, maxTime;
-    private HashSet<String> pageAll =new HashSet<>();
+    private HashSet<String> pageAll = new HashSet<>();
     private HashMap<String, Integer> os=new HashMap<>();
     private HashMap<String, Double> osStatictic=new HashMap<>();
+    private final HashMap<String, Integer> browser = new HashMap<>();
+    private final HashMap<String, Double> browserStatistic = new HashMap<>();
+    private final HashSet<String> pageError = new HashSet<>();
+
+    public Statistics() {
+        pageAll = new HashSet<>();
+    }
 
     public void addEntry(ArrayList<LogEntry> logEntryArr) {
         long sumAmount = 0;
@@ -30,6 +37,14 @@ public class Statistics {
                 os.put(logEntryArr.get(i).userAgent.getOs(),os.get(logEntryArr.get(i).userAgent.getOs())+1);}
             else {
                 os.put(logEntryArr.get(i).userAgent.getOs(),1);
+            }
+            if (logEntryArr.get(i).getResponse() == 404) {
+                pageError.add(logEntryArr.get(i).getUrlRequest());
+            }
+            if (browser.containsKey(logEntryArr.get(i).userAgent.getBrowser())) {
+                browser.put(logEntryArr.get(i).userAgent.getBrowser(), browser.get(logEntryArr.get(i).userAgent.getBrowser()) + 1);
+            } else {
+                browser.put(logEntryArr.get(i).userAgent.getBrowser(), 1);
             }
         }
         this.totalTraffic = sumAmount;
@@ -67,6 +82,19 @@ public class Statistics {
             osStatictic.put(entry.getKey(), (double)entry.getValue()/sumOs);
         }
         return osStatictic;
+    }
+    public HashSet<String> getPageError() {
+        return pageError;
+    }
+    public HashMap<String, Integer> getBrowser() {
+        return browser;
+    }
+    public HashMap<String, Double> getBrowserStatistic() {
+        double sumBrowser = browser.values().stream().mapToInt(Integer::intValue).sum();
+        for (Map.Entry<String, Integer> entry : browser.entrySet()) {
+            browserStatistic.put(entry.getKey(), entry.getValue() / sumBrowser);
+        }
+        return browserStatistic;
     }
 
     public long getTotalTraffic() {

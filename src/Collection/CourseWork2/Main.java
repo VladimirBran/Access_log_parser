@@ -1,4 +1,4 @@
-package CourseWork1;
+package CourseWork2;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -37,13 +37,16 @@ class Main {
                     Statistics statistics = new Statistics();
                     statistics.addEntry(logEntryArr);
 
-                    System.out.println("Объем трафика за час = " + statistics.getTotalTrafficHour());
+//                    System.out.println("Объем трафика за час = " + statistics.getTotalTrafficHour());
 //                    System.out.println("За период: ");
 //                    statistics.getTrafficRate(logEntryArr, LocalDate.of(2022, Month.SEPTEMBER, 26).atTime(5, 55, 55), LocalDate.of(2022, Month.SEPTEMBER, 26).atTime(5, 55, 55));
 //                    System.out.println("Общий объем за период: " + " c " + statistics.getMinTime() + " до " + statistics.getMaxTime() + " = " + statistics.getTotalTrafficPeriod());
 //                    System.out.println(statistics.getPageAll().toString());
-                    System.out.println("Частота встречаемости каждой ОС: "+statistics.getOs());
-                    System.out.println("Доля ОС: "+statistics.getOsStatictic());
+//                    System.out.println("Частота встречаемости каждой ОС: "+statistics.getOs());
+//                    System.out.println("Доля ОС: "+statistics.getOsStatictic());
+                    System.out.println("Список страниц с кодом ответа 404: "+statistics.getPageError().toString());
+                    System.out.println("Частота встречаемости браузеров: "+statistics.getBrowser());
+                    System.out.println("Доля браузеров: "+statistics.getBrowserStatistic());
                 } catch (LongLineException ex) {
                     ex.printStackTrace();
                 }

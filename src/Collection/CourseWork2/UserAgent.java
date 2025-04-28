@@ -1,4 +1,4 @@
-package CourseWork1;
+package CourseWork2;
 
 
 public class UserAgent {
@@ -22,7 +22,7 @@ public class UserAgent {
         } else if (userAgent.contains("Edge")) {
             return "Edge";
         } else {
-            return "Unknown";
+            return "Other";
         }
     }
 
@@ -34,7 +34,7 @@ public class UserAgent {
         } else if (userAgent.contains("Linux")) {
             return "Linux";
         } else {
-            return "Unknown";
+            return "Other";
         }
     }
 
