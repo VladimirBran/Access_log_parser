@@ -1,4 +1,6 @@
-package New1.Ex3;
+
+
+import Exercise1.LogEntry;
 
 import java.time.Duration;
 import java.time.LocalDateTime;
@@ -11,8 +13,8 @@ class Statistics {
     private LocalDateTime minTime;
     private LocalDateTime maxTime;
 
-    public Statistics() {
-    }
+//    public Statistics() {
+//    }
 
     public void addEntries(ArrayList<LogEntry> logEntryArr) {
         if (logEntryArr.isEmpty()) {
@@ -24,28 +26,26 @@ class Statistics {
         this.maxTime = logEntryArr.get(logEntryArr.size() - 1).getData();
         long hours = Duration.between(this.minTime, this.maxTime).toHours();
 
-        for (LogEntry entry : logEntryArr) {
-            sumAmount += entry.getAmount();
+        for (int i = 0; i < logEntryArr.size() - 1; i++) {
+            sumAmount += logEntryArr.get(i).getAmount();
         }
 
         this.totalTraffic = sumAmount;
         this.totalTrafficHour = hours > 0 ? totalTraffic / hours : totalTraffic;
     }
 
-    public void getTrafficRate(ArrayList<LogEntry> logEntryArr, LocalDateTime minTime, LocalDateTime maxTime) {
-        ArrayList<LogEntry> filteredEntries = new ArrayList<>();
+    public void getTrafficRate(ArrayList<CourseWork2.LogEntry> logEntryArr, LocalDateTime minTime, LocalDateTime maxTime) {
+        ArrayList<CourseWork2.LogEntry> logEntryArr2 = new ArrayList<>();
         int sum = 0;
-
-        for (LogEntry entry : logEntryArr) {
-            if ((entry.getData().isEqual(minTime) || entry.getData().isAfter(minTime)) &&
-                    (entry.getData().isEqual(maxTime) || entry.getData().isBefore(maxTime))) {
-                filteredEntries.add(entry);
+        for (int i = 0; i < logEntryArr.size() - 1; i++) {
+            if ((logEntryArr.get(i).getData().isEqual(minTime) || logEntryArr.get(i).getData().isAfter(minTime))
+                    && ((logEntryArr.get(i).getData().isEqual(maxTime) || logEntryArr.get(i).getData().isBefore(maxTime)))) {
+                logEntryArr2.add(logEntryArr.get(i));
             }
         }
-
-        for (LogEntry entry : filteredEntries) {
-            System.out.println(entry);
-            sum += entry.getAmount();
+        for (int i = 0; i < logEntryArr2.size() - 1; i++) {
+            System.out.println(logEntryArr2.get(i));
+            sum += logEntryArr2.get(i).getAmount();
         }
 
         this.totalTrafficPeriod = sum;

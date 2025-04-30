@@ -1,4 +1,8 @@
-package New1.Ex3;
+
+
+import Exercise1.LogEntry;
+import Exercise1.LongLineException;
+import Exercise1.Statistics;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -38,7 +42,7 @@ class Main {
                         logEntryArr.add(logEntry);
                     }
                     Statistics statistics = new Statistics();
-                    statistics.addEntries(logEntryArr);
+                    statistics.addEntry(logEntryArr);
 
                     System.out.println("Объем трафика за час = " + statistics.getTotalTrafficHour());
                     System.out.println("За период: ");
