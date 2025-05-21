@@ -1,4 +1,4 @@
-import java.io.PrintStream;
+package streamApi.ex1;
 
 public class LongLineException extends RuntimeException{
     public LongLineException(String message) {
