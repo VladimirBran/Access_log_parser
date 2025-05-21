@@ -1,3 +1,5 @@
+package streamApi.ex1;
+
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Locale;
@@ -179,7 +181,7 @@ class LogEntry {
     }
     @Override
     public String toString() {
-        return "LogParser{" +
+        return "User Agent{" +
                 "ipAddress='" + ipAddress + '\'' +
                 ", date='" + dateTime + '\'' +
                 ", method='" + httpMethod + '\'' +
@@ -190,5 +192,4 @@ class LogEntry {
                 ", userAgent='" + userAgent + '\'' +
                 '}';
     }
-
 }

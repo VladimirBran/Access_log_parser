@@ -1,3 +1,5 @@
+package streamApi.ex1;
+
 import java.io.*;
 import java.util.Scanner;
 
@@ -48,9 +50,13 @@ public class Main {
             System.out.println("Ошибка чтения файла: " + ex.getMessage());
         }
 
-        System.out.println("Среднее количество посещений в час: "+ (int)stat.avgVisitorsPerHour());
-        System.out.println("Средняя посещаемость пользователем: "+ (int)stat.getAvgAttendance());
-        System.out.println("Количество ошибочных запросов в час: "+ (int)stat.avgErrorRequestPerHour());
+//        System.out.println("Среднее количество посещений в час: "+ (int)stat.avgVisitorsPerHour());
+//        System.out.println("Средняя посещаемость пользователем: "+ (int)stat.getAvgAttendance());
+//        System.out.println("Количество ошибочных запросов в час: "+ (int)stat.avgErrorRequestPerHour());
+        System.out.println("Максимальная посещаемость пользователем: "+ stat.getMaxVisitsPerIp());
+        System.out.println("Пиковая посещаемость "+ stat.getSecondWithPeakVisitors()+" с количеством: "+stat.getMaxVisitsPerSecond());
+        stat.printStatisticsUrl();
+        stat.printRefersDomains();
     }
 
     private static int totalCountLines(String filePath) {

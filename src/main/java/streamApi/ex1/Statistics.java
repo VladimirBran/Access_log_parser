@@ -1,3 +1,5 @@
+package streamApi.ex1;
+
 import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
@@ -149,5 +151,16 @@ public class Statistics {
 
     private static double getPercentage(long score, double total){
         return (double) (score * 100/ total);
+    }
+
+    public void printStatisticsUrl() {
+        System.out.println("Всего уникальных URL-адресов: " + getWebsitePagesURL().size());
+        System.out.println("Всего запрошенных несуществующих URL-адресов: " + getWebsiteNoPagesURL().size());
+        System.out.println("Всего доменов всех рефералов: " + getRefersDomains().size());
+    }
+
+    public void printRefersDomains(){
+        System.out.println("Список доменов рефералов: ");
+        getRefersDomains().forEach(System.out::println);
     }
 }
